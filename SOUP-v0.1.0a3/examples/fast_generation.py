@@ -1,4 +1,3 @@
-import torch
 from mlbricks import soup
 
 model = soup(
@@ -11,6 +10,5 @@ model = soup(
     precision="fp16",
 )
 
-x = torch.randn(2, 128, 512)
-y = model(x)
-print(y.shape)
+# After moving to the final inference device:
+model.eval().prepare_generation()
